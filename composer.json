@@ -1,8 +1,19 @@
 {
     "name": "msg91/msg91",
-    "description": "A laravel php package to run msg91 services",
+    "description": "A Laravel PHP package to run MSG91 services",
     "type": "library",
-    "keyword":["msg91","otp","verify-token","otp-widget","laravel","php","php-package","otp-verification","msg91-services","verify-otp"],
+    "keywords": [
+        "msg91",
+        "otp",
+        "verify-token",
+        "otp-widget",
+        "laravel",
+        "php",
+        "php-package",
+        "otp-verification",
+        "msg91-services",
+        "verify-otp"
+    ],
     "require": {
         "php": "^8.1",
         "guzzlehttp/guzzle": "^7.0"
@@ -23,6 +34,5 @@
         }
     ],
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "version": "1.0.0"
+    "prefer-stable": true
 }
