@@ -44,6 +44,14 @@ class CampaignService {
         if (sizeof($inputData) > 1000) {
             throw new Exception("Record data limit exceeded : total limit 1000", 1);
         }
+
+        $count = 0;
+        foreach ($inputData['data'] as $data) {
+            if(!empty($data['to'])) $count++;
+            if(!empty($data['cc'])) $count++;
+            if(!empty($data['bcc'])) $count++;
+            if($count>1000) throw new Exception("Records data limit exceeded : total limit 1000 (including cc and bcc and to)", 1);
+        }
     }
 
     private function verifyAndGetCampaignMappings($campaignSlug) {
@@ -169,7 +177,7 @@ class CampaignService {
             ];
             $response = $client->{$method}($endpoint, $options);
             $statusCode = $response->getStatusCode();
-            var_dump($statusCode);
+
             $response = json_decode($response->getBody()->getContents(), true);
             return $response['data'];
         } catch (\Exception $e) {

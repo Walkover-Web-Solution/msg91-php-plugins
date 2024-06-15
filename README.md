@@ -12,7 +12,10 @@ You can install this package via Composer. Run the following command in your Lar
 composer require msg91/msg91
 ```
 
-## Once the package is installed, you can use it in your Laravel application for OTP verification as follows:
+## USAGE
+
+# OTP VERIFICATION
+Once the package is installed, you can use it in your Laravel application for OTP verification as follows:
 
 ```bash
 use Msg91\Services\OTPService;
@@ -32,5 +35,56 @@ if ($response['type'] === 'success') {
 } else {
     echo 'OTP verification failed: ' . $response['message'];
 }
+```
 
+## Campaign Service
+You can also use this package to run campaigns using the CampaignService. 
+Below is an example of how to use the CampaignService in your Laravel application:
 
+```bash
+use Msg91\Services\CampaignService;
+
+// Instantiate the CampaignService class
+$service = new CampaignService('your_auth_key');
+
+// Define your campaign slug and input data : max 1000 including cc and bcc as individual entity
+$campaignSlug = 'your_campaign_slug';
+$inputData = [
+    "data" => [
+        [
+            "to" => 'recipient1@example.com',
+            "cc" => 'cc1@example.com',
+            "bcc" => 'bcc1@example.com',
+            "mobiles" => '919876543210',
+            "name" => 'Recipient 1',
+            "from_name" => 'Sender Name',
+            "from_email" => 'sender@example.com',
+            "variables" => [
+                "var1" => 'value1',
+                "var2" => 'value2',
+            ],
+        ],
+        [
+            "to" => 'recipient1@example.com',
+            "cc" => 'cc1@example.com',
+            "bcc" => 'bcc1@example.com',
+            "mobiles" => '919876543210',
+            "name" => 'Recipient 1',
+            "from_name" => 'Sender Name',
+            "from_email" => 'sender@example.com',
+            "variables" => [
+                "var1" => 'value1',
+                "var2" => 'value2',
+            ],
+        ], ...
+];
+
+// Run the campaign
+$response = $service->runCampaign($campaignSlug, $inputData);
+
+// Handle the response
+var_dump($response);
+```
+
+## License
+This package is open-sourced software licensed under the MIT license.
