@@ -1,5 +1,5 @@
 {
-    "name": "msg91/msg91",
+    "name": "msg91/msg91-one-api",
     "description": "A Laravel PHP package to run MSG91 services",
     "type": "library",
     "keywords": [
